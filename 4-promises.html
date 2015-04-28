@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        var url = 'https://api.github.com/search/repositories?q=nodejs';
+
+        function makeAjaxCall(resolve, reject) {
+            // resolve and reject are two functions that will be provided by the Promise
+
+            var xhr = new XMLHttpRequest(url);
+            xhr.open('GET', url);
+            xhr.addEventListener('readystatechange', function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) resolve();
+                    else reject();
+                }
+            });
+            xhr.send();
+        }
+
+        var p = new Promise(makeAjaxCall);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
